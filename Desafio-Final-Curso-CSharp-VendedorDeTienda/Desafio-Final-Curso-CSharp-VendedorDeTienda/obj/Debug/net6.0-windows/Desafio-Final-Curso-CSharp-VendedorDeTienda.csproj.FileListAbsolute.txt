@@ -1,0 +1,17 @@
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj.AssemblyReference.cache
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio_Final_Curso_CSharp_VendedorDeTienda.Form1.resources
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj.GenerateResource.cache
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.AssemblyInfoInputs.cache
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.AssemblyInfo.cs
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj.CoreCompileInputs.cache
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\bin\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.exe
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\bin\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.deps.json
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\bin\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.runtimeconfig.json
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\bin\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.dll
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\bin\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.pdb
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.dll
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\refint\Desafio-Final-Curso-CSharp-VendedorDeTienda.dll
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.pdb
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\Desafio-Final-Curso-CSharp-VendedorDeTienda.genruntimeconfig.cache
+C:\Users\reyni\source\repos\Desafio-Final-Curso-CSharp-VendedorDeTienda\Desafio-Final-Curso-CSharp-VendedorDeTienda\obj\Debug\net6.0-windows\ref\Desafio-Final-Curso-CSharp-VendedorDeTienda.dll
