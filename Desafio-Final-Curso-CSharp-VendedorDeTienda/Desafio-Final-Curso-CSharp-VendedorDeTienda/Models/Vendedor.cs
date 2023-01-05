@@ -11,9 +11,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public Tienda Tienda { get; set; }
 
-
-        public ICotizacion Cotizar();
+        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad);
     }
 
 
@@ -22,10 +22,15 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         int id;
         string nombre;
         string apellido;
+        Tienda tienda;
         List<ICotizacion> cotizaciones = new List<ICotizacion>();
 
 
-
+        public Tienda Tienda 
+        {
+            get { return tienda; } 
+            set { tienda = value; } 
+        }
         public int Id 
         {
             get { return id; }
@@ -46,9 +51,14 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
 
         }
 
-        public ICotizacion Cotizar( float precioUnitario, )
+        public ICotizacion Cotizar(ICotizacion cotizacion ,float precioUnitario, int cantidad)
         {
-            ICotizacion cotizacion= new Cotizacion();
+            cotizacion.PrecioUnitario = precioUnitario;
+            cotizacion.CantidadPrendaCotizada = cantidad;
+            cotizacion.ResultadoCalculo = tienda.IdsToPrendas[cotizacion.IdPrenda].CalcularPrecio(precioUnitario) * cantidad;
+            cotizacion.FechaYHora = DateTime.Now.ToString();
+            cotizacion.IdVendedor = id;
+
             this.cotizaciones.Add(cotizacion);
             return cotizacion;
         }

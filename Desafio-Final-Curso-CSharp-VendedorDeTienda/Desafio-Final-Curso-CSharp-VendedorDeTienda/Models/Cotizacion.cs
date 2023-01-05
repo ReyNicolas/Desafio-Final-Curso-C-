@@ -11,7 +11,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         public int Id { get; set; }
         public string FechaYHora { get; set; }
         public int IdVendedor { get; set; }
-        public int IdPrenda { get; set; }
+        public string IdPrenda { get; set; }
         public float PrecioUnitario { get; set; }
         public int CantidadPrendaCotizada { get; set; }
         public float ResultadoCalculo { get; set; }
@@ -24,7 +24,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         int id;
         string fechaYHora;
         int idVendedor;
-        int idPrenda;
+        string idPrenda;
         float precioUnitario;
         int cantidadPrendaCotizada;
         float resultadoCalculo;
@@ -47,7 +47,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
             set { idVendedor = value; }
         }
 
-        public int IdPrenda
+        public string IdPrenda
         {
             get { return idPrenda; }
             set { idPrenda = value; }

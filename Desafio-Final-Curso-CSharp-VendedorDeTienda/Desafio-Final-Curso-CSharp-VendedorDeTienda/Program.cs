@@ -15,7 +15,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new CotizacionPrendaView());
-            Application.Run(new CotizacionPrendaView());
+            Application.Run(new CotizacionPrendaView(new CotizacionPrendaPresenter()));
 
             
 

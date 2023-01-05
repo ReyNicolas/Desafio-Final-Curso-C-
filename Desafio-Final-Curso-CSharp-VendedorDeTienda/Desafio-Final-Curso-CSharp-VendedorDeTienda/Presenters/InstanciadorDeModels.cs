@@ -10,11 +10,12 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
     internal class InstanciadorDeModels
     {
 
-        public Vendedor InstanciarVendedor(Vendedor vendedor)
+        public Vendedor InstanciarVendedor(Vendedor vendedor, Tienda tienda)
         {
             vendedor.Nombre = "nicolás";
             vendedor.Apellido = "rey";
             vendedor.Id = 123;
+            vendedor.Tienda = tienda;
             return vendedor;
         }
 

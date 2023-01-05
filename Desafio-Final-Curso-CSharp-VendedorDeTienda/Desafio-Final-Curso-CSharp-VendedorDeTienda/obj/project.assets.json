@@ -470,19 +470,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\reyni\\.nuget\\packages\\": {}
+    "C:\\Users\\Nico\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\reyni\\source\\repos\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj",
+      "projectUniqueName": "C:\\Users\\Nico\\Downloads\\Desafio-Final-Curso-CSharp--main\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj",
       "projectName": "Desafio-Final-Curso-CSharp-VendedorDeTienda",
-      "projectPath": "C:\\Users\\reyni\\source\\repos\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj",
-      "packagesPath": "C:\\Users\\reyni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\reyni\\source\\repos\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\obj\\",
+      "projectPath": "C:\\Users\\Nico\\Downloads\\Desafio-Final-Curso-CSharp--main\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda.csproj",
+      "packagesPath": "C:\\Users\\Nico\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nico\\Downloads\\Desafio-Final-Curso-CSharp--main\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\Desafio-Final-Curso-CSharp-VendedorDeTienda\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\reyni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nico\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -532,7 +532,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
