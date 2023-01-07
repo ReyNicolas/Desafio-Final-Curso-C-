@@ -13,7 +13,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         public string Apellido { get; set; }
         public Tienda Tienda { get; set; }
 
-        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad);
+        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, string tipo);
     }
 
 
@@ -23,8 +23,15 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         string nombre;
         string apellido;
         Tienda tienda;
+        AjustarPrecioTipoPrendaTipoCalidad ajustador;
         List<ICotizacion> cotizaciones = new List<ICotizacion>();
 
+        
+        public AjustarPrecioTipoPrendaTipoCalidad Ajustador
+        {
+            get { return ajustador; }
+            set { ajustador = value;}
+        }
 
         public Tienda Tienda 
         {
@@ -51,11 +58,11 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
 
         }
 
-        public ICotizacion Cotizar(ICotizacion cotizacion ,float precioUnitario, int cantidad)
+        public ICotizacion Cotizar(ICotizacion cotizacion ,float precioUnitario, int cantidad, string calidad, string tipo)
         {
             cotizacion.PrecioUnitario = precioUnitario;
             cotizacion.CantidadPrendaCotizada = cantidad;
-            cotizacion.ResultadoCalculo = tienda.IdsToPrendas[cotizacion.IdPrenda].CalcularPrecio(precioUnitario) * cantidad;
+            cotizacion.ResultadoCalculo = ajustador.AjustarPrecioPrendaConTipoYCalidad(precioUnitario,tipo,calidad) * cantidad;
             cotizacion.FechaYHora = DateTime.Now.ToString();
             cotizacion.IdVendedor = id;
 

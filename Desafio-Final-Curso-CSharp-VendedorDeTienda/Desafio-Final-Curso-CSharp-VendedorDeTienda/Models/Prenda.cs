@@ -1,177 +1,120 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
 {
-    public abstract class IPrenda
+
+    public interface  IPrenda
     {
+        public string Id { get; set; }
+        public string IdCalidad { get; set; }
+        public string IdTipo { get; set; }
 
-        protected string id;
-        protected ITipo calidadTipo;
-        protected int cantidadEnStock;
-
-        public string Id
+        public int CantidadEnStock { get; set; }
+    }
+    
+    
+    public class Prenda:IPrenda
+    {
+         string id;
+         string idCalidad;         
+         string idTipo;
+        int cantidadEnStock;
+        public Prenda(string idTipo, string idCalidad, int cantidad)
         {
+            this.idCalidad = idCalidad;
+            this.idTipo = idTipo;
+            cantidadEnStock = cantidad;
+            id = idTipo + idCalidad;
+        }
+        public string Id 
+        { 
             get { return id; }
             set { id = value; }
         }
 
-        public ITipo CalidadTipo
+        public string IdCalidad
         {
-            get { return calidadTipo; }
-            set { calidadTipo = value; }
+            get { return idCalidad; }
+            set { idCalidad = value; }
         }
-
+        public string IdTipo
+        {
+            get { return idTipo; }
+            set { idTipo = value; }
+        }
         public int CantidadEnStock
         {
             get { return cantidadEnStock; }
             set { cantidadEnStock = value; }
-        }
-
-        public virtual float CalcularPrecio(float precio)
-        {
-            return calidadTipo.AjustarPrecio(precio);
-        }
-
-    }
-
-    public class Pantalon : IPrenda
-    {
-        ITipo tipo;
-
-        public Pantalon(string id,ITipo calidad, int cantidad, ITipo tipo)
-        {
-            this.id = id;
-            calidadTipo= calidad;
-            cantidadEnStock= cantidad;
-            this.tipo= tipo;
-
-        }
-
-        public ITipo Tipo
-        {
-            get { return tipo; }
-            set { tipo = value; }
-        } 
-        public override float CalcularPrecio(float precio)
-        {
-            precio = tipo.AjustarPrecio(precio);
-            return base.CalcularPrecio(precio);
-        }
-    }
-
-    public class Camisa: IPrenda
-    {
-        ITipo mangaTipo;
-        ITipo cuelloTipo;
-
-        public Camisa(string id, ITipo calidad, int cantidad, ITipo manga, ITipo cuello)
-        {
-            this.id = id;
-            calidadTipo = calidad;
-            cantidadEnStock = cantidad;
-            mangaTipo = manga;
-            cuelloTipo = cuello;
-
-        }
-
-        public ITipo CuelloTipo
-        {
-            get { return cuelloTipo; }
-            set { cuelloTipo = value;}
-        }
-
-        public ITipo MangaTipo
-        {
-            get { return mangaTipo; }
-            set { mangaTipo = value;}
-        }
-
-
-        public override float CalcularPrecio(float precio)
-        {
-            precio = mangaTipo.AjustarPrecio(precio);
-            precio = cuelloTipo.AjustarPrecio(precio);
-            return base.CalcularPrecio(precio);
-        }
+        }     
     }
 
 
-    public interface ITipo
+    public interface ITipoAjustarPrecioPrenda
     {
         public  float AjustarPrecio(float precio);
     }
 
-
-    public class CalidadStandard : ITipo
+    public class AjustarPrecioMultiplicar: ITipoAjustarPrecioPrenda
     {
+        float multiplicador;
+
+        public AjustarPrecioMultiplicar(float valor)
+        {
+            multiplicador = valor;
+        }
         public float AjustarPrecio(float precio)
         {
+            return precio * multiplicador; 
+        }
+    }
+
+    public class AjustarPrecioMultiplicarTrasAnidado: ITipoAjustarPrecioPrenda
+    {
+        float multiplicador;
+        ITipoAjustarPrecioPrenda otroAjustador;
+
+        public AjustarPrecioMultiplicarTrasAnidado(float valor, ITipoAjustarPrecioPrenda ajustador)
+        {
+            multiplicador = valor;
+            otroAjustador = ajustador;
+        }
+
+        public float AjustarPrecio(float precio)
+        {
+            return otroAjustador.AjustarPrecio(precio)*multiplicador;
+        }
+
+    }
+
+    public class AjustarPrecioTipoPrendaTipoCalidad
+    {
+        Dictionary<string, ITipoAjustarPrecioPrenda> idToAjustadores;
+        public AjustarPrecioTipoPrendaTipoCalidad(Dictionary<string, ITipoAjustarPrecioPrenda> idToAjustadores) 
+        {
+            this.idToAjustadores = idToAjustadores;
+        }
+
+        public float AjustarPrecioPrendaConTipoYCalidad(float precio,string tipo, string calidad)
+        {
+            if (idToAjustadores.ContainsKey(tipo))
+            {
+               precio= idToAjustadores[tipo].AjustarPrecio(precio);
+            }
+            if (idToAjustadores.ContainsKey(calidad))
+            {
+              precio=  idToAjustadores[calidad].AjustarPrecio(precio);
+            }
+
             return precio;
         }
+
     }
-
-    public class CalidadPremium : ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio*1.3f;
-        }
-    }
-
-
-    public class PantalonChupin: ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio * 0.88f;
-        }
-    }
-
-    public class PantalonComun : ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio;
-        }
-    }
-
-
-    public class CuelloMao : ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio * 1.03f;
-        }
-    }
-
-    public class CuelloComun : ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio;
-        }
-    }
-
-    public class MangaCorta : ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio * 0.9f;
-        }
-    }
-
-    public class MangaLarga : ITipo
-    {
-        public float AjustarPrecio(float precio)
-        {
-            return precio;
-        }
-    }
-
 
 
 

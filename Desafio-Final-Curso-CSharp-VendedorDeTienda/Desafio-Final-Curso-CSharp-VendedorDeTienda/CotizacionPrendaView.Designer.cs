@@ -34,9 +34,11 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.lblDireccionTienda = new System.Windows.Forms.Label();
             this.lblNombreTienda = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lblCodVendedorText = new System.Windows.Forms.Label();
             this.linklblHistorial = new System.Windows.Forms.LinkLabel();
             this.lblCodigoVendedor = new System.Windows.Forms.Label();
             this.lblNombreApellidoVendedor = new System.Windows.Forms.Label();
+            this.lblMensajeError = new System.Windows.Forms.Label();
             this.gpBoxPrecioUnitarioYCantidad = new System.Windows.Forms.GroupBox();
             this.txtBoxCantidadACotizar = new System.Windows.Forms.TextBox();
             this.txtBoxPrecioUnitario = new System.Windows.Forms.TextBox();
@@ -95,7 +97,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.splitContainer1.Panel1.Controls.Add(this.lblDireccionTienda);
             this.splitContainer1.Panel1.Controls.Add(this.lblNombreTienda);
             // 
@@ -109,18 +111,20 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // lblDireccionTienda
             // 
             this.lblDireccionTienda.AutoSize = true;
-            this.lblDireccionTienda.Location = new System.Drawing.Point(683, 9);
+            this.lblDireccionTienda.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDireccionTienda.Location = new System.Drawing.Point(654, 9);
             this.lblDireccionTienda.Name = "lblDireccionTienda";
-            this.lblDireccionTienda.Size = new System.Drawing.Size(105, 15);
+            this.lblDireccionTienda.Size = new System.Drawing.Size(134, 23);
             this.lblDireccionTienda.TabIndex = 1;
             this.lblDireccionTienda.Text = "lblDireccionTienda";
             // 
             // lblNombreTienda
             // 
             this.lblNombreTienda.AutoSize = true;
+            this.lblNombreTienda.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblNombreTienda.Location = new System.Drawing.Point(12, 9);
             this.lblNombreTienda.Name = "lblNombreTienda";
-            this.lblNombreTienda.Size = new System.Drawing.Size(99, 15);
+            this.lblNombreTienda.Size = new System.Drawing.Size(124, 23);
             this.lblNombreTienda.TabIndex = 0;
             this.lblNombreTienda.Text = "lblNombreTienda";
             // 
@@ -133,7 +137,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.splitContainer2.Panel1.Controls.Add(this.lblCodVendedorText);
             this.splitContainer2.Panel1.Controls.Add(this.linklblHistorial);
             this.splitContainer2.Panel1.Controls.Add(this.lblCodigoVendedor);
             this.splitContainer2.Panel1.Controls.Add(this.lblNombreApellidoVendedor);
@@ -142,6 +147,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer2.Panel2.Controls.Add(this.lblMensajeError);
             this.splitContainer2.Panel2.Controls.Add(this.gpBoxPrecioUnitarioYCantidad);
             this.splitContainer2.Panel2.Controls.Add(this.lblResultadoPrecioMostrar);
             this.splitContainer2.Panel2.Controls.Add(this.lblResultadoPrecioTexto);
@@ -153,33 +159,58 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.SplitterDistance = 40;
             this.splitContainer2.TabIndex = 0;
             // 
+            // lblCodVendedorText
+            // 
+            this.lblCodVendedorText.AutoSize = true;
+            this.lblCodVendedorText.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCodVendedorText.Location = new System.Drawing.Point(302, 10);
+            this.lblCodVendedorText.Name = "lblCodVendedorText";
+            this.lblCodVendedorText.Size = new System.Drawing.Size(28, 23);
+            this.lblCodVendedorText.TabIndex = 5;
+            this.lblCodVendedorText.Text = "ID:";
+            // 
             // linklblHistorial
             // 
             this.linklblHistorial.AutoSize = true;
+            this.linklblHistorial.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linklblHistorial.Location = new System.Drawing.Point(697, 10);
             this.linklblHistorial.Name = "linklblHistorial";
-            this.linklblHistorial.Size = new System.Drawing.Size(83, 15);
+            this.linklblHistorial.Size = new System.Drawing.Size(66, 23);
             this.linklblHistorial.TabIndex = 4;
             this.linklblHistorial.TabStop = true;
-            this.linklblHistorial.Text = "linklblHistorial";
+            this.linklblHistorial.Text = "Historial";
+            this.linklblHistorial.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblHistorial_LinkClicked);
             // 
             // lblCodigoVendedor
             // 
             this.lblCodigoVendedor.AutoSize = true;
+            this.lblCodigoVendedor.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCodigoVendedor.Location = new System.Drawing.Point(336, 10);
             this.lblCodigoVendedor.Name = "lblCodigoVendedor";
-            this.lblCodigoVendedor.Size = new System.Drawing.Size(109, 15);
+            this.lblCodigoVendedor.Size = new System.Drawing.Size(133, 23);
             this.lblCodigoVendedor.TabIndex = 3;
             this.lblCodigoVendedor.Text = "lblCodigoVendedor";
             // 
             // lblNombreApellidoVendedor
             // 
             this.lblNombreApellidoVendedor.AutoSize = true;
+            this.lblNombreApellidoVendedor.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblNombreApellidoVendedor.Location = new System.Drawing.Point(12, 10);
             this.lblNombreApellidoVendedor.Name = "lblNombreApellidoVendedor";
-            this.lblNombreApellidoVendedor.Size = new System.Drawing.Size(158, 15);
+            this.lblNombreApellidoVendedor.Size = new System.Drawing.Size(195, 23);
             this.lblNombreApellidoVendedor.TabIndex = 2;
             this.lblNombreApellidoVendedor.Text = "lblNombreApellidoVendedor";
+            this.lblNombreApellidoVendedor.Click += new System.EventHandler(this.lblNombreApellidoVendedor_Click);
+            // 
+            // lblMensajeError
+            // 
+            this.lblMensajeError.AutoSize = true;
+            this.lblMensajeError.BackColor = System.Drawing.Color.IndianRed;
+            this.lblMensajeError.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.lblMensajeError.Location = new System.Drawing.Point(345, 401);
+            this.lblMensajeError.Name = "lblMensajeError";
+            this.lblMensajeError.Size = new System.Drawing.Size(0, 20);
+            this.lblMensajeError.TabIndex = 6;
             // 
             // gpBoxPrecioUnitarioYCantidad
             // 
@@ -188,6 +219,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gpBoxPrecioUnitarioYCantidad.Controls.Add(this.txtBoxPrecioUnitario);
             this.gpBoxPrecioUnitarioYCantidad.Controls.Add(this.lblCantidadACotizar);
             this.gpBoxPrecioUnitarioYCantidad.Controls.Add(this.lblPrecioUnitario);
+            this.gpBoxPrecioUnitarioYCantidad.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gpBoxPrecioUnitarioYCantidad.Location = new System.Drawing.Point(117, 334);
             this.gpBoxPrecioUnitarioYCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.gpBoxPrecioUnitarioYCantidad.Name = "gpBoxPrecioUnitarioYCantidad";
@@ -199,59 +231,65 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             // txtBoxCantidadACotizar
             // 
-            this.txtBoxCantidadACotizar.Location = new System.Drawing.Point(416, 28);
+            this.txtBoxCantidadACotizar.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtBoxCantidadACotizar.Location = new System.Drawing.Point(463, 29);
             this.txtBoxCantidadACotizar.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxCantidadACotizar.Name = "txtBoxCantidadACotizar";
-            this.txtBoxCantidadACotizar.Size = new System.Drawing.Size(70, 23);
+            this.txtBoxCantidadACotizar.Size = new System.Drawing.Size(70, 25);
             this.txtBoxCantidadACotizar.TabIndex = 3;
             this.txtBoxCantidadACotizar.TextChanged += new System.EventHandler(this.txtBoxCantidadACotizar_TextChanged);
             // 
             // txtBoxPrecioUnitario
             // 
+            this.txtBoxPrecioUnitario.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtBoxPrecioUnitario.Location = new System.Drawing.Point(146, 30);
             this.txtBoxPrecioUnitario.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxPrecioUnitario.Name = "txtBoxPrecioUnitario";
-            this.txtBoxPrecioUnitario.Size = new System.Drawing.Size(111, 23);
+            this.txtBoxPrecioUnitario.Size = new System.Drawing.Size(111, 25);
             this.txtBoxPrecioUnitario.TabIndex = 2;
             this.txtBoxPrecioUnitario.TextChanged += new System.EventHandler(this.txtBoxPrecioUnitario_TextChanged);
             // 
             // lblCantidadACotizar
             // 
             this.lblCantidadACotizar.AutoSize = true;
-            this.lblCantidadACotizar.Location = new System.Drawing.Point(292, 32);
+            this.lblCantidadACotizar.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCantidadACotizar.Location = new System.Drawing.Point(288, 30);
             this.lblCantidadACotizar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCantidadACotizar.Name = "lblCantidadACotizar";
-            this.lblCantidadACotizar.Size = new System.Drawing.Size(106, 15);
+            this.lblCantidadACotizar.Size = new System.Drawing.Size(163, 26);
             this.lblCantidadACotizar.TabIndex = 1;
-            this.lblCantidadACotizar.Text = "Cantidad A Cotizar";
+            this.lblCantidadACotizar.Text = "Cantidad A Cotizar:";
             // 
             // lblPrecioUnitario
             // 
             this.lblPrecioUnitario.AutoSize = true;
-            this.lblPrecioUnitario.Location = new System.Drawing.Point(36, 32);
+            this.lblPrecioUnitario.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPrecioUnitario.Location = new System.Drawing.Point(15, 28);
             this.lblPrecioUnitario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrecioUnitario.Name = "lblPrecioUnitario";
-            this.lblPrecioUnitario.Size = new System.Drawing.Size(85, 15);
+            this.lblPrecioUnitario.Size = new System.Drawing.Size(131, 26);
             this.lblPrecioUnitario.TabIndex = 0;
-            this.lblPrecioUnitario.Text = "Precio Unitario";
+            this.lblPrecioUnitario.Text = "Precio Unitario:";
             // 
             // lblResultadoPrecioMostrar
             // 
             this.lblResultadoPrecioMostrar.AutoSize = true;
-            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(437, 425);
+            this.lblResultadoPrecioMostrar.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(437, 432);
             this.lblResultadoPrecioMostrar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioMostrar.Name = "lblResultadoPrecioMostrar";
-            this.lblResultadoPrecioMostrar.Size = new System.Drawing.Size(0, 15);
+            this.lblResultadoPrecioMostrar.Size = new System.Drawing.Size(0, 26);
             this.lblResultadoPrecioMostrar.TabIndex = 4;
             this.lblResultadoPrecioMostrar.Click += new System.EventHandler(this.label5_Click);
             // 
             // lblResultadoPrecioTexto
             // 
             this.lblResultadoPrecioTexto.AutoSize = true;
-            this.lblResultadoPrecioTexto.Location = new System.Drawing.Point(357, 425);
+            this.lblResultadoPrecioTexto.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblResultadoPrecioTexto.Location = new System.Drawing.Point(345, 421);
             this.lblResultadoPrecioTexto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioTexto.Name = "lblResultadoPrecioTexto";
-            this.lblResultadoPrecioTexto.Size = new System.Drawing.Size(62, 15);
+            this.lblResultadoPrecioTexto.Size = new System.Drawing.Size(88, 26);
             this.lblResultadoPrecioTexto.TabIndex = 3;
             this.lblResultadoPrecioTexto.Text = "Resultado:";
             // 
@@ -272,6 +310,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.panel1.BackColor = System.Drawing.Color.Lavender;
             this.panel1.Controls.Add(this.lblUnidadesDisponibles);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(117, 283);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(552, 46);
@@ -280,18 +319,20 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // lblUnidadesDisponibles
             // 
             this.lblUnidadesDisponibles.AutoSize = true;
-            this.lblUnidadesDisponibles.Location = new System.Drawing.Point(208, 20);
+            this.lblUnidadesDisponibles.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblUnidadesDisponibles.Location = new System.Drawing.Point(262, 18);
             this.lblUnidadesDisponibles.Name = "lblUnidadesDisponibles";
-            this.lblUnidadesDisponibles.Size = new System.Drawing.Size(12, 15);
+            this.lblUnidadesDisponibles.Size = new System.Drawing.Size(17, 18);
             this.lblUnidadesDisponibles.TabIndex = 1;
             this.lblUnidadesDisponibles.Text = "_";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 20);
+            this.label3.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(18, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 15);
+            this.label3.Size = new System.Drawing.Size(232, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Unidades de stock disponible:";
             // 
@@ -302,6 +343,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gbPrendas.Controls.Add(this.panel5);
             this.gbPrendas.Controls.Add(this.panel4);
             this.gbPrendas.Controls.Add(this.gpBoxCalidad);
+            this.gbPrendas.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbPrendas.Location = new System.Drawing.Point(117, 17);
             this.gbPrendas.Name = "gbPrendas";
             this.gbPrendas.Size = new System.Drawing.Size(553, 253);
@@ -337,7 +379,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnCuelloMao.AutoSize = true;
             this.rdBtnCuelloMao.Location = new System.Drawing.Point(153, 8);
             this.rdBtnCuelloMao.Name = "rdBtnCuelloMao";
-            this.rdBtnCuelloMao.Size = new System.Drawing.Size(49, 19);
+            this.rdBtnCuelloMao.Size = new System.Drawing.Size(61, 30);
             this.rdBtnCuelloMao.TabIndex = 7;
             this.rdBtnCuelloMao.Text = "Mao";
             this.rdBtnCuelloMao.UseVisualStyleBackColor = true;
@@ -347,9 +389,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.rdBtnCuelloComun.AutoSize = true;
             this.rdBtnCuelloComun.Checked = true;
-            this.rdBtnCuelloComun.Location = new System.Drawing.Point(62, 8);
+            this.rdBtnCuelloComun.Location = new System.Drawing.Point(68, 8);
             this.rdBtnCuelloComun.Name = "rdBtnCuelloComun";
-            this.rdBtnCuelloComun.Size = new System.Drawing.Size(65, 19);
+            this.rdBtnCuelloComun.Size = new System.Drawing.Size(82, 30);
             this.rdBtnCuelloComun.TabIndex = 4;
             this.rdBtnCuelloComun.TabStop = true;
             this.rdBtnCuelloComun.Text = "Comun";
@@ -361,7 +403,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(11, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 15);
+            this.label2.Size = new System.Drawing.Size(55, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Cuello";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -380,9 +422,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // rdBtnMangaCorta
             // 
             this.rdBtnMangaCorta.AutoSize = true;
-            this.rdBtnMangaCorta.Location = new System.Drawing.Point(148, 7);
+            this.rdBtnMangaCorta.Location = new System.Drawing.Point(142, 5);
             this.rdBtnMangaCorta.Name = "rdBtnMangaCorta";
-            this.rdBtnMangaCorta.Size = new System.Drawing.Size(54, 19);
+            this.rdBtnMangaCorta.Size = new System.Drawing.Size(72, 30);
             this.rdBtnMangaCorta.TabIndex = 6;
             this.rdBtnMangaCorta.Text = "Corta";
             this.rdBtnMangaCorta.UseVisualStyleBackColor = true;
@@ -392,9 +434,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.rdBtnMangaLarga.AutoSize = true;
             this.rdBtnMangaLarga.Checked = true;
-            this.rdBtnMangaLarga.Location = new System.Drawing.Point(64, 7);
+            this.rdBtnMangaLarga.Location = new System.Drawing.Point(72, 5);
             this.rdBtnMangaLarga.Name = "rdBtnMangaLarga";
-            this.rdBtnMangaLarga.Size = new System.Drawing.Size(54, 19);
+            this.rdBtnMangaLarga.Size = new System.Drawing.Size(74, 30);
             this.rdBtnMangaLarga.TabIndex = 5;
             this.rdBtnMangaLarga.TabStop = true;
             this.rdBtnMangaLarga.Text = "Larga";
@@ -406,7 +448,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 15);
+            this.label1.Size = new System.Drawing.Size(63, 26);
             this.label1.TabIndex = 2;
             this.label1.Text = "Manga";
             // 
@@ -426,7 +468,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPantalonChupin.AutoSize = true;
             this.rdBtnPantalonChupin.Location = new System.Drawing.Point(52, 41);
             this.rdBtnPantalonChupin.Name = "rdBtnPantalonChupin";
-            this.rdBtnPantalonChupin.Size = new System.Drawing.Size(64, 19);
+            this.rdBtnPantalonChupin.Size = new System.Drawing.Size(82, 30);
             this.rdBtnPantalonChupin.TabIndex = 1;
             this.rdBtnPantalonChupin.Text = "Chupin";
             this.rdBtnPantalonChupin.UseVisualStyleBackColor = true;
@@ -438,7 +480,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPantalonComun.Checked = true;
             this.rdBtnPantalonComun.Location = new System.Drawing.Point(52, 10);
             this.rdBtnPantalonComun.Name = "rdBtnPantalonComun";
-            this.rdBtnPantalonComun.Size = new System.Drawing.Size(65, 19);
+            this.rdBtnPantalonComun.Size = new System.Drawing.Size(82, 30);
             this.rdBtnPantalonComun.TabIndex = 0;
             this.rdBtnPantalonComun.TabStop = true;
             this.rdBtnPantalonComun.Text = "Comun";
@@ -461,9 +503,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnCamisa.AutoSize = true;
             this.rdBtnCamisa.Checked = true;
             this.rdBtnCamisa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rdBtnCamisa.Location = new System.Drawing.Point(280, 7);
+            this.rdBtnCamisa.Location = new System.Drawing.Point(275, 3);
             this.rdBtnCamisa.Name = "rdBtnCamisa";
-            this.rdBtnCamisa.Size = new System.Drawing.Size(64, 19);
+            this.rdBtnCamisa.Size = new System.Drawing.Size(83, 30);
             this.rdBtnCamisa.TabIndex = 1;
             this.rdBtnCamisa.TabStop = true;
             this.rdBtnCamisa.Text = "Camisa";
@@ -474,9 +516,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.rdBtnPantalon.AutoSize = true;
             this.rdBtnPantalon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rdBtnPantalon.Location = new System.Drawing.Point(66, 7);
+            this.rdBtnPantalon.Location = new System.Drawing.Point(66, 3);
             this.rdBtnPantalon.Name = "rdBtnPantalon";
-            this.rdBtnPantalon.Size = new System.Drawing.Size(72, 19);
+            this.rdBtnPantalon.Size = new System.Drawing.Size(98, 30);
             this.rdBtnPantalon.TabIndex = 0;
             this.rdBtnPantalon.Text = "Pantalon";
             this.rdBtnPantalon.UseVisualStyleBackColor = true;
@@ -497,9 +539,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // rdBtnPrendaPremium
             // 
             this.rdBtnPrendaPremium.AutoSize = true;
-            this.rdBtnPrendaPremium.Location = new System.Drawing.Point(228, 39);
+            this.rdBtnPrendaPremium.Location = new System.Drawing.Point(256, 36);
             this.rdBtnPrendaPremium.Name = "rdBtnPrendaPremium";
-            this.rdBtnPrendaPremium.Size = new System.Drawing.Size(74, 19);
+            this.rdBtnPrendaPremium.Size = new System.Drawing.Size(100, 30);
             this.rdBtnPrendaPremium.TabIndex = 1;
             this.rdBtnPrendaPremium.Text = "Premium";
             this.rdBtnPrendaPremium.UseVisualStyleBackColor = true;
@@ -511,7 +553,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPrendaStandard.Checked = true;
             this.rdBtnPrendaStandard.Location = new System.Drawing.Point(64, 36);
             this.rdBtnPrendaStandard.Name = "rdBtnPrendaStandard";
-            this.rdBtnPrendaStandard.Size = new System.Drawing.Size(72, 19);
+            this.rdBtnPrendaStandard.Size = new System.Drawing.Size(103, 30);
             this.rdBtnPrendaStandard.TabIndex = 0;
             this.rdBtnPrendaStandard.TabStop = true;
             this.rdBtnPrendaStandard.Text = "Standard";
@@ -596,5 +638,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
         private RadioButton rdBtnPantalon;
         private Panel panel6;
         private Panel panel5;
+        private Label lblMensajeError;
+        private Label lblCodVendedorText;
     }
 }

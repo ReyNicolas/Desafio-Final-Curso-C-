@@ -18,13 +18,22 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
         IPrenda prendaACotizar;
 
 
+        string prendaTipo ="";
+        string prendaNombre="";
+        string tipoPantalon="";
+        string tipoManga="";
+        string tipoCuello="";
+        string calidad="";
+
+
+
         ICotizacionPrendaView cotizacionPrendaView;
 
 
 
-        public void Iniciar(ICotizacionPrendaView cotizacionPrendaView)
+        public void Iniciar(ICotizacionPrendaView view)
         {
-            this.cotizacionPrendaView = cotizacionPrendaView;
+            cotizacionPrendaView = view;
             instaciadorDeModelos = new InstanciadorDeModels();
             tienda= new Tienda();
             vendedor= new Vendedor();
@@ -38,37 +47,113 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
 
             cotizacionPrendaView.IdVendedor = vendedor.Id.ToString();
             cotizacionPrendaView.NombreYApellidoVendedor = vendedor.Nombre + " " + vendedor.Apellido;
-            
 
+
+            cotizacionPrendaView.OnPrendaChange += CambiarPrendaNombre;
+            cotizacionPrendaView.OnCalidadChange += CambiarCalidad;
+            cotizacionPrendaView.OnTipoPantalonChange += CambiarTipoPantalon;
+            cotizacionPrendaView.OnTipoMangaChange += CambiarTipoManga;
+            cotizacionPrendaView.OnTipoCuelloChange += CambiarTipoCuello;
+
+            cotizacionPrendaView.OnPresionarCotizar += Cotizar;
         }
   
+        void CambiarPrendaNombre(object sender, string nombre) 
+        {
+            prendaNombre = nombre;
+            CambiarPrendaACotizar();
+
+        }
+
+        void CambiarTipoPantalon(object sender, string tipo)
+        {
+            tipoPantalon = tipo;
+            prendaTipo = prendaNombre + tipo;
+            CambiarPrendaACotizar();
+        }
+
+        void CambiarTipoManga(object sender, string tipo)
+        {
+            tipoManga = tipo;
+            prendaTipo = prendaNombre + tipoManga + tipoCuello;
+            CambiarPrendaACotizar();
+        }
+
+        void CambiarTipoCuello(object sender, string tipo)
+        {
+            tipoCuello = tipo;
+            prendaTipo = prendaNombre + tipoManga + tipoCuello;
+            CambiarPrendaACotizar();
+        }
+
+        void CambiarCalidad(object sender, string unaCalidad)
+        {
+            calidad = unaCalidad;
+            CambiarPrendaACotizar();
+        }
+
+
+
         void CambiarPrendaACotizar()
 
         {
-            string codPrenda;
+            string codPrenda="";
 
-            if (cotizacionPrendaView.Prenda == "Camisa")
+            if (prendaNombre == "Camisa")
             {
-                codPrenda = cotizacionPrendaView.Prenda + " " + cotizacionPrendaView.Calidad + " " + cotizacionPrendaView.TipoManga + " " + cotizacionPrendaView.TipoCuello;
+                codPrenda = prendaNombre + tipoManga + tipoCuello + calidad;
             }
-            else
+            if (prendaNombre == "Pantalon")
             {
-                codPrenda = cotizacionPrendaView.Prenda + " " + cotizacionPrendaView.Calidad + " " + cotizacionPrendaView.TipoPantalon;
+                codPrenda = prendaNombre +  tipoPantalon + calidad;
             }
 
-            prendaACotizar = tienda.IdsToPrendas[codPrenda];
+            if (tienda.IdsToPrendas.ContainsKey(codPrenda))
+            {
+                prendaACotizar = tienda.IdsToPrendas[codPrenda];
+                ActualizarCantidadStockPrenda();
+            }
+           
+        }
+               
+        void ActualizarCantidadStockPrenda()
+        {
+            cotizacionPrendaView.CantidadStockPrenda = prendaACotizar.CantidadEnStock.ToString();
         }
 
-        void ActualizarCantidadPrenda()
+        public void Cotizar(object sender, EventArgs e)
         {
-            cotizacionPrendaView.CantidadPrendaACotizar = prendaACotizar.CantidadEnStock.ToString();
-        }
+            float precioUnitario=0;
+            int cantidadACotizar=0;
+            cotizacionPrendaView.MensajeError = "";
 
-        public void Cotizar()
-        {
+            try
+            {
+                precioUnitario = float.Parse(cotizacionPrendaView.PrecioUnitario);
+                if (precioUnitario <= 0) throw new FormatException();
+            } 
+            catch(FormatException ex) 
+            {
+                cotizacionPrendaView.MensajeError += "El precio unitario debe ser un numero decimal positivo \n";
+            }
+            try
+            {
+                cantidadACotizar = int.Parse(cotizacionPrendaView.CantidadPrendaACotizar);
+                if(cantidadACotizar <0 || cantidadACotizar > prendaACotizar.CantidadEnStock) throw new FormatException();
+            }
+            catch(FormatException ex)
+            { 
+                cotizacionPrendaView.MensajeError += "La cantidad a cotizar debe ser un numero entero positivo\n e inferior a la cantidad de stock \n";
+            }
+            if(cotizacionPrendaView.MensajeError.Length > 0)
+            {
+                return;
+            }
+
             ICotizacion cotizacion = new Cotizacion();
             cotizacion.IdPrenda = prendaACotizar.Id;
-            vendedor.Cotizar(cotizacion, float.Parse(cotizacionPrendaView.PrecioUnitario), int.Parse(cotizacionPrendaView.CantidadPrendaACotizar));
+            vendedor.Cotizar(cotizacion,precioUnitario , cantidadACotizar,calidad, prendaTipo);
+            cotizacionPrendaView.ResultadoCalculo = cotizacion.ResultadoCalculo.ToString();
         }
         
 
