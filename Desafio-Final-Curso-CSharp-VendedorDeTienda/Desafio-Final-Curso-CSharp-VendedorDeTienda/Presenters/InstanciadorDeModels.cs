@@ -12,7 +12,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
 
         public Vendedor InstanciarVendedor(Vendedor vendedor, Tienda tienda)
         {
-            
+
 
             Dictionary<string, ITipoAjustarPrecioPrenda> ajustadores = new Dictionary<string, ITipoAjustarPrecioPrenda>();
 
@@ -29,7 +29,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
             ajustadores.Add("CalidadPremium", ajustadorMCalidadPremium);
 
 
-            
+
             vendedor.Nombre = "Nicolás";
             vendedor.Apellido = "Rey";
             vendedor.Id = 123;
@@ -47,7 +47,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
 
 
             List<IPrenda> prendas = new List<IPrenda>();
-           
+
 
             prendas.Add(new Prenda("PantalonComun", "CalidadStandard", 250));
             prendas.Add(new Prenda("PantalonComun", "CalidadPremium", 250));
@@ -67,16 +67,16 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
             prendas.Add(new Prenda("CamisaMangaLargaCuelloComun", "CalidadStandard", 175));
             prendas.Add(new Prenda("CamisaMangaLargaCuelloComun", "CalidadPremium", 175));
 
-            tienda.AgregarListaDePrendas(prendas);           
+            tienda.AgregarListaDePrendas(prendas);
 
             return tienda;
         }
 
-            
 
 
 
-          
-        
+
+
+
     }
 }

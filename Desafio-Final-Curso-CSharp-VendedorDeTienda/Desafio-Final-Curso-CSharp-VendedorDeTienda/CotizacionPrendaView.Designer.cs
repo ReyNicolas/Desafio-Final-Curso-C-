@@ -142,7 +142,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.Panel1.Controls.Add(this.linklblHistorial);
             this.splitContainer2.Panel1.Controls.Add(this.lblCodigoVendedor);
             this.splitContainer2.Panel1.Controls.Add(this.lblNombreApellidoVendedor);
-            this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             // 
             // splitContainer2.Panel2
             // 
@@ -154,7 +153,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.Panel2.Controls.Add(this.btnCotizarPrenda);
             this.splitContainer2.Panel2.Controls.Add(this.panel1);
             this.splitContainer2.Panel2.Controls.Add(this.gbPrendas);
-            this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
             this.splitContainer2.Size = new System.Drawing.Size(800, 508);
             this.splitContainer2.SplitterDistance = 40;
             this.splitContainer2.TabIndex = 0;
@@ -200,7 +198,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.lblNombreApellidoVendedor.Size = new System.Drawing.Size(195, 23);
             this.lblNombreApellidoVendedor.TabIndex = 2;
             this.lblNombreApellidoVendedor.Text = "lblNombreApellidoVendedor";
-            this.lblNombreApellidoVendedor.Click += new System.EventHandler(this.lblNombreApellidoVendedor_Click);
             // 
             // lblMensajeError
             // 
@@ -237,7 +234,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.txtBoxCantidadACotizar.Name = "txtBoxCantidadACotizar";
             this.txtBoxCantidadACotizar.Size = new System.Drawing.Size(70, 25);
             this.txtBoxCantidadACotizar.TabIndex = 3;
-            this.txtBoxCantidadACotizar.TextChanged += new System.EventHandler(this.txtBoxCantidadACotizar_TextChanged);
             // 
             // txtBoxPrecioUnitario
             // 
@@ -247,7 +243,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.txtBoxPrecioUnitario.Name = "txtBoxPrecioUnitario";
             this.txtBoxPrecioUnitario.Size = new System.Drawing.Size(111, 25);
             this.txtBoxPrecioUnitario.TabIndex = 2;
-            this.txtBoxPrecioUnitario.TextChanged += new System.EventHandler(this.txtBoxPrecioUnitario_TextChanged);
             // 
             // lblCantidadACotizar
             // 
@@ -275,12 +270,11 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.lblResultadoPrecioMostrar.AutoSize = true;
             this.lblResultadoPrecioMostrar.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(437, 432);
+            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(437, 421);
             this.lblResultadoPrecioMostrar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioMostrar.Name = "lblResultadoPrecioMostrar";
             this.lblResultadoPrecioMostrar.Size = new System.Drawing.Size(0, 26);
             this.lblResultadoPrecioMostrar.TabIndex = 4;
-            this.lblResultadoPrecioMostrar.Click += new System.EventHandler(this.label5_Click);
             // 
             // lblResultadoPrecioTexto
             // 
@@ -296,6 +290,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // btnCotizarPrenda
             // 
             this.btnCotizarPrenda.BackColor = System.Drawing.Color.DarkOrchid;
+            this.btnCotizarPrenda.Enabled = false;
+            this.btnCotizarPrenda.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCotizarPrenda.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCotizarPrenda.Location = new System.Drawing.Point(126, 410);
             this.btnCotizarPrenda.Margin = new System.Windows.Forms.Padding(2);
@@ -350,7 +346,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gbPrendas.TabIndex = 0;
             this.gbPrendas.TabStop = false;
             this.gbPrendas.Text = "Prendas";
-            this.gbPrendas.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // panel6
             // 
@@ -383,20 +378,16 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnCuelloMao.TabIndex = 7;
             this.rdBtnCuelloMao.Text = "Mao";
             this.rdBtnCuelloMao.UseVisualStyleBackColor = true;
-            this.rdBtnCuelloMao.CheckedChanged += new System.EventHandler(this.rdBtnCuelloMao_CheckedChanged);
             // 
             // rdBtnCuelloComun
             // 
             this.rdBtnCuelloComun.AutoSize = true;
-            this.rdBtnCuelloComun.Checked = true;
             this.rdBtnCuelloComun.Location = new System.Drawing.Point(68, 8);
             this.rdBtnCuelloComun.Name = "rdBtnCuelloComun";
             this.rdBtnCuelloComun.Size = new System.Drawing.Size(82, 30);
             this.rdBtnCuelloComun.TabIndex = 4;
-            this.rdBtnCuelloComun.TabStop = true;
             this.rdBtnCuelloComun.Text = "Comun";
             this.rdBtnCuelloComun.UseVisualStyleBackColor = true;
-            this.rdBtnCuelloComun.CheckedChanged += new System.EventHandler(this.rdBtnCuelloComun_CheckedChanged);
             // 
             // label2
             // 
@@ -406,7 +397,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.label2.Size = new System.Drawing.Size(55, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Cuello";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -428,20 +418,16 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnMangaCorta.TabIndex = 6;
             this.rdBtnMangaCorta.Text = "Corta";
             this.rdBtnMangaCorta.UseVisualStyleBackColor = true;
-            this.rdBtnMangaCorta.CheckedChanged += new System.EventHandler(this.rdBtnMangaCorta_CheckedChanged);
             // 
             // rdBtnMangaLarga
             // 
             this.rdBtnMangaLarga.AutoSize = true;
-            this.rdBtnMangaLarga.Checked = true;
             this.rdBtnMangaLarga.Location = new System.Drawing.Point(72, 5);
             this.rdBtnMangaLarga.Name = "rdBtnMangaLarga";
             this.rdBtnMangaLarga.Size = new System.Drawing.Size(74, 30);
             this.rdBtnMangaLarga.TabIndex = 5;
-            this.rdBtnMangaLarga.TabStop = true;
             this.rdBtnMangaLarga.Text = "Larga";
             this.rdBtnMangaLarga.UseVisualStyleBackColor = true;
-            this.rdBtnMangaLarga.CheckedChanged += new System.EventHandler(this.rdBtnMangaLarga_CheckedChanged);
             // 
             // label1
             // 
@@ -472,20 +458,16 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPantalonChupin.TabIndex = 1;
             this.rdBtnPantalonChupin.Text = "Chupin";
             this.rdBtnPantalonChupin.UseVisualStyleBackColor = true;
-            this.rdBtnPantalonChupin.CheckedChanged += new System.EventHandler(this.rdBtnPantalonChupin_CheckedChanged);
             // 
             // rdBtnPantalonComun
             // 
             this.rdBtnPantalonComun.AutoSize = true;
-            this.rdBtnPantalonComun.Checked = true;
             this.rdBtnPantalonComun.Location = new System.Drawing.Point(52, 10);
             this.rdBtnPantalonComun.Name = "rdBtnPantalonComun";
             this.rdBtnPantalonComun.Size = new System.Drawing.Size(82, 30);
             this.rdBtnPantalonComun.TabIndex = 0;
-            this.rdBtnPantalonComun.TabStop = true;
             this.rdBtnPantalonComun.Text = "Comun";
             this.rdBtnPantalonComun.UseVisualStyleBackColor = true;
-            this.rdBtnPantalonComun.CheckedChanged += new System.EventHandler(this.rdBtnPantalonComun_CheckedChanged);
             // 
             // panel4
             // 
@@ -501,16 +483,13 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // rdBtnCamisa
             // 
             this.rdBtnCamisa.AutoSize = true;
-            this.rdBtnCamisa.Checked = true;
             this.rdBtnCamisa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.rdBtnCamisa.Location = new System.Drawing.Point(275, 3);
             this.rdBtnCamisa.Name = "rdBtnCamisa";
             this.rdBtnCamisa.Size = new System.Drawing.Size(83, 30);
             this.rdBtnCamisa.TabIndex = 1;
-            this.rdBtnCamisa.TabStop = true;
             this.rdBtnCamisa.Text = "Camisa";
             this.rdBtnCamisa.UseVisualStyleBackColor = true;
-            this.rdBtnCamisa.CheckedChanged += new System.EventHandler(this.rdBtnCamisa_CheckedChanged);
             // 
             // rdBtnPantalon
             // 
@@ -522,7 +501,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPantalon.TabIndex = 0;
             this.rdBtnPantalon.Text = "Pantalon";
             this.rdBtnPantalon.UseVisualStyleBackColor = true;
-            this.rdBtnPantalon.CheckedChanged += new System.EventHandler(this.rdBtnPantalon_CheckedChanged);
             // 
             // gpBoxCalidad
             // 
@@ -545,20 +523,16 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPrendaPremium.TabIndex = 1;
             this.rdBtnPrendaPremium.Text = "Premium";
             this.rdBtnPrendaPremium.UseVisualStyleBackColor = true;
-            this.rdBtnPrendaPremium.CheckedChanged += new System.EventHandler(this.rdBtnPrendaPremium_CheckedChanged);
             // 
             // rdBtnPrendaStandard
             // 
             this.rdBtnPrendaStandard.AutoSize = true;
-            this.rdBtnPrendaStandard.Checked = true;
             this.rdBtnPrendaStandard.Location = new System.Drawing.Point(64, 36);
             this.rdBtnPrendaStandard.Name = "rdBtnPrendaStandard";
             this.rdBtnPrendaStandard.Size = new System.Drawing.Size(103, 30);
             this.rdBtnPrendaStandard.TabIndex = 0;
-            this.rdBtnPrendaStandard.TabStop = true;
             this.rdBtnPrendaStandard.Text = "Standard";
             this.rdBtnPrendaStandard.UseVisualStyleBackColor = true;
-            this.rdBtnPrendaStandard.CheckedChanged += new System.EventHandler(this.rdBtnPrendaStandard_CheckedChanged);
             // 
             // CotizacionPrendaView
             // 

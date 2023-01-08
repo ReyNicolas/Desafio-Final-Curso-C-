@@ -26,6 +26,10 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Views
 
         public string MensajeError { get; set; }
 
+        public void AgregarListado(string id, string fechaYhora, string idVendedor, string prenda, string cantidad, string resultado); 
+
+
+
         public event EventHandler<string>  OnPrendaChange;
         public event EventHandler<string> OnTipoPantalonChange;
         public event EventHandler<string> OnTipoMangaChange;
@@ -33,6 +37,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Views
         public event EventHandler<string> OnCalidadChange;
 
         public event EventHandler OnPresionarCotizar;
+        public event EventHandler OnVerHistorialVendedor;
     }
 
 

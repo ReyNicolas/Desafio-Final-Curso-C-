@@ -18,13 +18,15 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
     {
        
         CotizacionPrendaPresenter cotizacionPrendaPresenter;
-        FormHistorialVendedor formHistorialVendedor=new FormHistorialVendedor();
+        FormHistorialVendedor formHistorialVendedor;
 
         public event EventHandler<string> OnPrendaChange;
         public event EventHandler<string> OnTipoPantalonChange;
         public event EventHandler<string> OnTipoMangaChange;
         public event EventHandler<string> OnTipoCuelloChange;
         public event EventHandler<string> OnCalidadChange;
+        public event EventHandler OnVerHistorialVendedor;
+
 
         public event EventHandler OnPresionarCotizar;
 
@@ -33,13 +35,15 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             InitializeComponent();
             this.cotizacionPrendaPresenter = cotizacionPrendaPresenter;
             this.cotizacionPrendaPresenter.Iniciar(this);
-            AsociarEventos();
-          
+
+
+            formHistorialVendedor = new FormHistorialVendedor(this);
+            AsociarEventos();    
         }
+
 
         void AsociarEventos()
         {
-           
             rdBtnPantalon.Click += delegate { OnPrendaChange?.Invoke(this,"Pantalon"); };
             rdBtnCamisa.Click += delegate { OnPrendaChange?.Invoke(this,"Camisa"); };
 
@@ -58,8 +62,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
 
             btnCotizarPrenda.Click += delegate { OnPresionarCotizar?.Invoke(this, EventArgs.Empty); };
 
+            linklblHistorial.LinkClicked += delegate { OnVerHistorialVendedor?.Invoke(this, EventArgs.Empty); };
         }
-
 
 
 
@@ -103,7 +107,19 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
         public string CantidadStockPrenda 
         {
             get { return lblUnidadesDisponibles.Text; } 
-            set { lblUnidadesDisponibles.Text = value; } 
+            set {
+                lblUnidadesDisponibles.Text = value;
+                if(value.Length > 0)
+                {
+                    btnCotizarPrenda.Enabled = true;
+                }
+                else
+                {
+                    btnCotizarPrenda.Enabled = false;
+                    lblUnidadesDisponibles.Text = "_";
+                }
+            
+            } 
         
         }
 
@@ -119,129 +135,17 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             set { lblResultadoPrecioMostrar.Text= value; } 
         }
 
-
-
-
-
-
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        public void AgregarListado(string id, string fechaYhora, string idVendedor, string prenda, string cantidad, string resultado)
         {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            formHistorialVendedor.AgregarCotizacion( id,  fechaYhora,  idVendedor,  prenda,  cantidad,  resultado);
         }
 
 
-
-        
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-
-       
-
-        private void txtBoxPrecioUnitario_TextChanged(object sender, EventArgs e)
-        {
-            //TODO: cambiar resultado
-        }
-
-        
-
-        private void txtBoxCantidadACotizar_TextChanged(object sender, EventArgs e)
-        {
-            //TODO: cambiar resultado
-        }
-
-
-        private void rdBtnPrendaStandard_CheckedChanged(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void rdBtnPrendaPremium_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-
-
-        private void rdBtnCamisa_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-        private void rdBtnPantalon_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
-
-        private void rdBtnPantalonComun_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void rdBtnPantalonChupin_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-
-        
-        private void rdBtnCuelloComun_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void rdBtnCuelloMao_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
-
-        private void rdBtnMangaLarga_CheckedChanged(object sender, EventArgs e)
-        {
-          
-        }
-                    
-
-        private void rdBtnMangaCorta_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void lblNombreApellidoVendedor_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void linklblHistorial_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             formHistorialVendedor.Show();
+            this.Enabled = false;
         }
 
     }

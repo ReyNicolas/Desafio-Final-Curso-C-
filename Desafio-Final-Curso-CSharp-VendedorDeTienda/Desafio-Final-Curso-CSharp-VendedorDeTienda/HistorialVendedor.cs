@@ -12,17 +12,43 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
 {
     public partial class FormHistorialVendedor : Form
     {
-        public FormHistorialVendedor()
+        CotizacionPrendaView prendaView;
+        public FormHistorialVendedor( CotizacionPrendaView vistaPadre )
         {
             InitializeComponent();
-            
+            this.ControlBox = false;   
+            this.prendaView = vistaPadre;
         }
 
-        
-        private void HistorialVendedor_FormClosing(object sender, FormClosingEventArgs e)
+        public void AgregarCotizacion(string id, string fechaYhora, string idVendedor, string prenda, string cantidad, string resultado)
         {
-            e.Cancel = true;
-            Hide();
+            ListViewItem lista = new ListViewItem(id);
+            lista.SubItems.Add(fechaYhora);
+            lista.SubItems.Add(idVendedor);
+            lista.SubItems.Add(prenda);
+            lista.SubItems.Add(cantidad);
+            lista.SubItems.Add(resultado);
+            listViewHistorial.Items.Add(lista);
+        }
+
+        private void FormHistorialVendedor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.prendaView.Show();
+            this.prendaView.Enabled = true;
+            listViewHistorial.Items.Clear();
+            this.Hide();
+            
+            
         }
     }
 }

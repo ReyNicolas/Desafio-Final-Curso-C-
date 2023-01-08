@@ -13,6 +13,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         public string Apellido { get; set; }
         public Tienda Tienda { get; set; }
 
+        public List<ICotizacion> Cotizaciones { get; }
         public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, string tipo);
     }
 
@@ -26,23 +27,23 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         AjustarPrecioTipoPrendaTipoCalidad ajustador;
         List<ICotizacion> cotizaciones = new List<ICotizacion>();
 
-        
+
         public AjustarPrecioTipoPrendaTipoCalidad Ajustador
         {
             get { return ajustador; }
-            set { ajustador = value;}
+            set { ajustador = value; }
         }
 
-        public Tienda Tienda 
+        public Tienda Tienda
         {
-            get { return tienda; } 
-            set { tienda = value; } 
+            get { return tienda; }
+            set { tienda = value; }
         }
-        public int Id 
+        public int Id
         {
             get { return id; }
-            set { id = value; } 
-        
+            set { id = value; }
+
         }
         public string Nombre
         {
@@ -58,11 +59,15 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
 
         }
 
-        public ICotizacion Cotizar(ICotizacion cotizacion ,float precioUnitario, int cantidad, string calidad, string tipo)
+        public List<ICotizacion> Cotizaciones 
+        {
+            get { return cotizaciones; }
+        }
+        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, string tipo)
         {
             cotizacion.PrecioUnitario = precioUnitario;
             cotizacion.CantidadPrendaCotizada = cantidad;
-            cotizacion.ResultadoCalculo = ajustador.AjustarPrecioPrendaConTipoYCalidad(precioUnitario,tipo,calidad) * cantidad;
+            cotizacion.ResultadoCalculo = ajustador.AjustarPrecioPrendaConTipoYCalidad(precioUnitario, tipo, calidad) * cantidad;
             cotizacion.FechaYHora = DateTime.Now.ToString();
             cotizacion.IdVendedor = id;
 

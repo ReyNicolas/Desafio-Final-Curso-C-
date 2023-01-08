@@ -17,14 +17,12 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
         InstanciadorDeModels instaciadorDeModelos;
         IPrenda prendaACotizar;
 
-
         string prendaTipo ="";
         string prendaNombre="";
         string tipoPantalon="";
         string tipoManga="";
         string tipoCuello="";
         string calidad="";
-
 
 
         ICotizacionPrendaView cotizacionPrendaView;
@@ -56,6 +54,16 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
             cotizacionPrendaView.OnTipoCuelloChange += CambiarTipoCuello;
 
             cotizacionPrendaView.OnPresionarCotizar += Cotizar;
+            cotizacionPrendaView.OnVerHistorialVendedor += MostrarHistorialVendedor;
+        }
+
+
+        void MostrarHistorialVendedor(object sender,EventArgs e)
+        {
+            foreach (ICotizacion cotizacion in vendedor.Cotizaciones)
+           {
+                cotizacionPrendaView.AgregarListado(cotizacion.Id.ToString(), cotizacion.FechaYHora, cotizacion.IdVendedor.ToString(), cotizacion.IdPrenda, cotizacion.CantidadPrendaCotizada.ToString(), cotizacion.ResultadoCalculo.ToString());
+            }
         }
   
         void CambiarPrendaNombre(object sender, string nombre) 
@@ -112,6 +120,10 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
             {
                 prendaACotizar = tienda.IdsToPrendas[codPrenda];
                 ActualizarCantidadStockPrenda();
+            }
+            else
+            {
+                cotizacionPrendaView.CantidadStockPrenda = "";
             }
            
         }
