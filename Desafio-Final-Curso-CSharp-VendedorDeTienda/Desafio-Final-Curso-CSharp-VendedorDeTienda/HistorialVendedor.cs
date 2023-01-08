@@ -31,15 +31,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             listViewHistorial.Items.Add(lista);
         }
 
-        private void FormHistorialVendedor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {

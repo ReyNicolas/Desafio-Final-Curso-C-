@@ -27,7 +27,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
         public event EventHandler<string> OnCalidadChange;
         public event EventHandler OnVerHistorialVendedor;
 
-
         public event EventHandler OnPresionarCotizar;
 
         public CotizacionPrendaView( CotizacionPrendaPresenter cotizacionPrendaPresenter )
@@ -35,8 +34,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             InitializeComponent();
             this.cotizacionPrendaPresenter = cotizacionPrendaPresenter;
             this.cotizacionPrendaPresenter.Iniciar(this);
-
-
             formHistorialVendedor = new FormHistorialVendedor(this);
             AsociarEventos();    
         }
@@ -82,7 +79,14 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
         public string MensajeError
         {
             get { return lblMensajeError.Text; }
-            set { lblMensajeError.Text = value; }
+            set {
+                lblMensajeError.Text = value;
+                if (lblMensajeError.Text.Length >0)
+                {
+                    PanelCotizar.Enabled = true;
+                    btnNuevaConsulta.Visible = false;
+                }                
+            }
   
         }
 
@@ -117,10 +121,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
                 {
                     btnCotizarPrenda.Enabled = false;
                     lblUnidadesDisponibles.Text = "_";
-                }
-            
-            } 
-        
+                }            
+            }         
         }
 
         public string CantidadPrendaACotizar 
@@ -140,12 +142,23 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             formHistorialVendedor.AgregarCotizacion( id,  fechaYhora,  idVendedor,  prenda,  cantidad,  resultado);
         }
 
-
-
         private void linklblHistorial_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             formHistorialVendedor.Show();
             this.Enabled = false;
+        }
+
+        
+        private void btnCotizarPrenda_Click(object sender, EventArgs e)
+        {
+            PanelCotizar.Enabled = false;
+            btnNuevaConsulta.Visible = true;
+        }
+        private void btnNuevaConsulta_Click(object sender, EventArgs e)
+        {
+            PanelCotizar.Enabled = true;
+            btnNuevaConsulta.Visible = false;
+            lblResultadoPrecioMostrar.Text = "";
         }
 
     }

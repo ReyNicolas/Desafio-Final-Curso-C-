@@ -54,7 +54,6 @@
             this.listViewHistorial.TabIndex = 0;
             this.listViewHistorial.UseCompatibleStateImageBehavior = false;
             this.listViewHistorial.View = System.Windows.Forms.View.Details;
-            this.listViewHistorial.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // IDCotizacion
             // 
@@ -111,7 +110,6 @@
             this.Controls.Add(this.listViewHistorial);
             this.Name = "FormHistorialVendedor";
             this.Text = "Historial Vendedor";
-            this.Load += new System.EventHandler(this.FormHistorialVendedor_Load);
             this.ResumeLayout(false);
 
         }

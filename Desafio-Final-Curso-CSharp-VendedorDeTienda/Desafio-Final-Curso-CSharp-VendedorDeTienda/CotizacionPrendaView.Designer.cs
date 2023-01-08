@@ -38,6 +38,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.linklblHistorial = new System.Windows.Forms.LinkLabel();
             this.lblCodigoVendedor = new System.Windows.Forms.Label();
             this.lblNombreApellidoVendedor = new System.Windows.Forms.Label();
+            this.PanelCotizar = new System.Windows.Forms.Panel();
             this.lblMensajeError = new System.Windows.Forms.Label();
             this.gpBoxPrecioUnitarioYCantidad = new System.Windows.Forms.GroupBox();
             this.txtBoxCantidadACotizar = new System.Windows.Forms.TextBox();
@@ -69,6 +70,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gpBoxCalidad = new System.Windows.Forms.GroupBox();
             this.rdBtnPrendaPremium = new System.Windows.Forms.RadioButton();
             this.rdBtnPrendaStandard = new System.Windows.Forms.RadioButton();
+            this.btnNuevaConsulta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,6 +79,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.PanelCotizar.SuspendLayout();
             this.gpBoxPrecioUnitarioYCantidad.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbPrendas.SuspendLayout();
@@ -104,8 +107,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 546);
-            this.splitContainer1.SplitterDistance = 34;
+            this.splitContainer1.Size = new System.Drawing.Size(808, 613);
+            this.splitContainer1.SplitterDistance = 38;
             this.splitContainer1.TabIndex = 0;
             // 
             // lblDireccionTienda
@@ -146,15 +149,10 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer2.Panel2.Controls.Add(this.lblMensajeError);
-            this.splitContainer2.Panel2.Controls.Add(this.gpBoxPrecioUnitarioYCantidad);
-            this.splitContainer2.Panel2.Controls.Add(this.lblResultadoPrecioMostrar);
-            this.splitContainer2.Panel2.Controls.Add(this.lblResultadoPrecioTexto);
-            this.splitContainer2.Panel2.Controls.Add(this.btnCotizarPrenda);
-            this.splitContainer2.Panel2.Controls.Add(this.panel1);
-            this.splitContainer2.Panel2.Controls.Add(this.gbPrendas);
-            this.splitContainer2.Size = new System.Drawing.Size(800, 508);
-            this.splitContainer2.SplitterDistance = 40;
+            this.splitContainer2.Panel2.Controls.Add(this.PanelCotizar);
+            this.splitContainer2.Panel2.Controls.Add(this.btnNuevaConsulta);
+            this.splitContainer2.Size = new System.Drawing.Size(808, 571);
+            this.splitContainer2.SplitterDistance = 44;
             this.splitContainer2.TabIndex = 0;
             // 
             // lblCodVendedorText
@@ -199,12 +197,26 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.lblNombreApellidoVendedor.TabIndex = 2;
             this.lblNombreApellidoVendedor.Text = "lblNombreApellidoVendedor";
             // 
+            // PanelCotizar
+            // 
+            this.PanelCotizar.Controls.Add(this.lblMensajeError);
+            this.PanelCotizar.Controls.Add(this.gpBoxPrecioUnitarioYCantidad);
+            this.PanelCotizar.Controls.Add(this.lblResultadoPrecioMostrar);
+            this.PanelCotizar.Controls.Add(this.lblResultadoPrecioTexto);
+            this.PanelCotizar.Controls.Add(this.btnCotizarPrenda);
+            this.PanelCotizar.Controls.Add(this.panel1);
+            this.PanelCotizar.Controls.Add(this.gbPrendas);
+            this.PanelCotizar.Location = new System.Drawing.Point(75, 9);
+            this.PanelCotizar.Name = "PanelCotizar";
+            this.PanelCotizar.Size = new System.Drawing.Size(656, 461);
+            this.PanelCotizar.TabIndex = 8;
+            // 
             // lblMensajeError
             // 
             this.lblMensajeError.AutoSize = true;
             this.lblMensajeError.BackColor = System.Drawing.Color.IndianRed;
             this.lblMensajeError.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.lblMensajeError.Location = new System.Drawing.Point(345, 401);
+            this.lblMensajeError.Location = new System.Drawing.Point(270, 392);
             this.lblMensajeError.Name = "lblMensajeError";
             this.lblMensajeError.Size = new System.Drawing.Size(0, 20);
             this.lblMensajeError.TabIndex = 6;
@@ -217,7 +229,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gpBoxPrecioUnitarioYCantidad.Controls.Add(this.lblCantidadACotizar);
             this.gpBoxPrecioUnitarioYCantidad.Controls.Add(this.lblPrecioUnitario);
             this.gpBoxPrecioUnitarioYCantidad.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gpBoxPrecioUnitarioYCantidad.Location = new System.Drawing.Point(117, 334);
+            this.gpBoxPrecioUnitarioYCantidad.Location = new System.Drawing.Point(42, 325);
             this.gpBoxPrecioUnitarioYCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.gpBoxPrecioUnitarioYCantidad.Name = "gpBoxPrecioUnitarioYCantidad";
             this.gpBoxPrecioUnitarioYCantidad.Padding = new System.Windows.Forms.Padding(2);
@@ -270,7 +282,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.lblResultadoPrecioMostrar.AutoSize = true;
             this.lblResultadoPrecioMostrar.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(437, 421);
+            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(362, 412);
             this.lblResultadoPrecioMostrar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioMostrar.Name = "lblResultadoPrecioMostrar";
             this.lblResultadoPrecioMostrar.Size = new System.Drawing.Size(0, 26);
@@ -280,7 +292,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.lblResultadoPrecioTexto.AutoSize = true;
             this.lblResultadoPrecioTexto.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResultadoPrecioTexto.Location = new System.Drawing.Point(345, 421);
+            this.lblResultadoPrecioTexto.Location = new System.Drawing.Point(270, 412);
             this.lblResultadoPrecioTexto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioTexto.Name = "lblResultadoPrecioTexto";
             this.lblResultadoPrecioTexto.Size = new System.Drawing.Size(88, 26);
@@ -293,13 +305,14 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.btnCotizarPrenda.Enabled = false;
             this.btnCotizarPrenda.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCotizarPrenda.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCotizarPrenda.Location = new System.Drawing.Point(126, 410);
+            this.btnCotizarPrenda.Location = new System.Drawing.Point(51, 401);
             this.btnCotizarPrenda.Margin = new System.Windows.Forms.Padding(2);
             this.btnCotizarPrenda.Name = "btnCotizarPrenda";
             this.btnCotizarPrenda.Size = new System.Drawing.Size(193, 44);
             this.btnCotizarPrenda.TabIndex = 2;
             this.btnCotizarPrenda.Text = "Cotizar";
             this.btnCotizarPrenda.UseVisualStyleBackColor = false;
+            this.btnCotizarPrenda.Click += new System.EventHandler(this.btnCotizarPrenda_Click);
             // 
             // panel1
             // 
@@ -307,7 +320,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.panel1.Controls.Add(this.lblUnidadesDisponibles);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel1.Location = new System.Drawing.Point(117, 283);
+            this.panel1.Location = new System.Drawing.Point(42, 274);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(552, 46);
             this.panel1.TabIndex = 1;
@@ -340,7 +353,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gbPrendas.Controls.Add(this.panel4);
             this.gbPrendas.Controls.Add(this.gpBoxCalidad);
             this.gbPrendas.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gbPrendas.Location = new System.Drawing.Point(117, 17);
+            this.gbPrendas.Location = new System.Drawing.Point(42, 8);
             this.gbPrendas.Name = "gbPrendas";
             this.gbPrendas.Size = new System.Drawing.Size(553, 253);
             this.gbPrendas.TabIndex = 0;
@@ -534,11 +547,25 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPrendaStandard.Text = "Standard";
             this.rdBtnPrendaStandard.UseVisualStyleBackColor = true;
             // 
+            // btnNuevaConsulta
+            // 
+            this.btnNuevaConsulta.BackColor = System.Drawing.Color.BlueViolet;
+            this.btnNuevaConsulta.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNuevaConsulta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNuevaConsulta.Location = new System.Drawing.Point(132, 476);
+            this.btnNuevaConsulta.Name = "btnNuevaConsulta";
+            this.btnNuevaConsulta.Size = new System.Drawing.Size(213, 41);
+            this.btnNuevaConsulta.TabIndex = 7;
+            this.btnNuevaConsulta.Text = "Realizar nueva Cotizacion";
+            this.btnNuevaConsulta.UseVisualStyleBackColor = false;
+            this.btnNuevaConsulta.Visible = false;
+            this.btnNuevaConsulta.Click += new System.EventHandler(this.btnNuevaConsulta_Click);
+            // 
             // CotizacionPrendaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 546);
+            this.ClientSize = new System.Drawing.Size(808, 613);
             this.Controls.Add(this.splitContainer1);
             this.Name = "CotizacionPrendaView";
             this.Text = "Cotizacion Prenda";
@@ -550,9 +577,10 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.PanelCotizar.ResumeLayout(false);
+            this.PanelCotizar.PerformLayout();
             this.gpBoxPrecioUnitarioYCantidad.ResumeLayout(false);
             this.gpBoxPrecioUnitarioYCantidad.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -614,5 +642,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
         private Panel panel5;
         private Label lblMensajeError;
         private Label lblCodVendedorText;
+        private Button btnNuevaConsulta;
+        private Panel PanelCotizar;
     }
 }

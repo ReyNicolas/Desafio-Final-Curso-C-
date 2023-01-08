@@ -24,9 +24,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
         string tipoCuello="";
         string calidad="";
 
-
         ICotizacionPrendaView cotizacionPrendaView;
-
 
 
         public void Iniciar(ICotizacionPrendaView view)
@@ -36,8 +34,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
             tienda= new Tienda();
             vendedor= new Vendedor();
 
-            instaciadorDeModelos.InstanciarTienda(tienda);
-            instaciadorDeModelos.InstanciarVendedor(vendedor, tienda);
+            tienda= instaciadorDeModelos.InstanciarTienda(tienda);
+            vendedor= instaciadorDeModelos.InstanciarVendedor(vendedor, tienda);
 
 
             cotizacionPrendaView.DireccionTienda = tienda.Direccion;
