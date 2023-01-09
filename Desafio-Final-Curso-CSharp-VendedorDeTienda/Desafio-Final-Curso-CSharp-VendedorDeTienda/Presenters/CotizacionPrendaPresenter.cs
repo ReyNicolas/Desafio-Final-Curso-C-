@@ -15,14 +15,14 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
         Tienda tienda;
         Vendedor vendedor;
         InstanciadorDeModels instaciadorDeModelos;
+        IHistorialCotizacionesCrear historialCotizaciones;
         IPrenda prendaACotizar;
 
-        string prendaTipo ="";
-        string prendaNombre="";
-        string tipoPantalon="";
-        string tipoManga="";
-        string tipoCuello="";
+ 
+        string prendaNombre="";  
         string calidad="";
+        string prendaTipo = "";
+        Dictionary<string, string> dicPropiedadesValor = new Dictionary<string, string>(); 
 
         ICotizacionPrendaView cotizacionPrendaView;
 
@@ -32,10 +32,11 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
             cotizacionPrendaView = view;
             instaciadorDeModelos = new InstanciadorDeModels();
             tienda= new Tienda();
-            vendedor= new Vendedor();
 
             tienda= instaciadorDeModelos.InstanciarTienda(tienda);
-            vendedor= instaciadorDeModelos.InstanciarVendedor(vendedor, tienda);
+            historialCotizaciones = instaciadorDeModelos.InstanciarHistorialCotizaciones();
+            vendedor = instaciadorDeModelos.InstanciarVendedor(tienda);
+           
 
 
             cotizacionPrendaView.DireccionTienda = tienda.Direccion;
@@ -67,28 +68,29 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
         void CambiarPrendaNombre(object sender, string nombre) 
         {
             prendaNombre = nombre;
+            dicPropiedadesValor.Clear();
             CambiarPrendaACotizar();
 
         }
 
         void CambiarTipoPantalon(object sender, string tipo)
         {
-            tipoPantalon = tipo;
-            prendaTipo = prendaNombre + tipo;
+            dicPropiedadesValor.Remove("Estilo");
+            dicPropiedadesValor.Add("Estilo", tipo);
             CambiarPrendaACotizar();
         }
 
         void CambiarTipoManga(object sender, string tipo)
         {
-            tipoManga = tipo;
-            prendaTipo = prendaNombre + tipoManga + tipoCuello;
+            dicPropiedadesValor.Remove("Manga");
+            dicPropiedadesValor.Add("Manga",tipo);
             CambiarPrendaACotizar();
         }
 
         void CambiarTipoCuello(object sender, string tipo)
         {
-            tipoCuello = tipo;
-            prendaTipo = prendaNombre + tipoManga + tipoCuello;
+            dicPropiedadesValor.Remove("Cuello");
+            dicPropiedadesValor.Add("Cuello", tipo);
             CambiarPrendaACotizar();
         }
 
@@ -105,18 +107,20 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
         {
             string codPrenda="";
 
-            if (prendaNombre == "Camisa")
+            if (prendaNombre == "Camisa" && dicPropiedadesValor.ContainsKey("Manga") && dicPropiedadesValor.ContainsKey("Cuello"))
             {
-                codPrenda = prendaNombre + tipoManga + tipoCuello + calidad;
+                prendaTipo = prendaNombre + dicPropiedadesValor["Manga"] + dicPropiedadesValor["Cuello"];
+                codPrenda = prendaTipo + calidad;
             }
-            if (prendaNombre == "Pantalon")
+            if (prendaNombre == "Pantalon" && dicPropiedadesValor.ContainsKey("Estilo"))
             {
-                codPrenda = prendaNombre +  tipoPantalon + calidad;
+                prendaTipo = prendaNombre + dicPropiedadesValor["Estilo"];
+                codPrenda =  prendaTipo + calidad;
             }
 
             if (tienda.IdsToPrendas.ContainsKey(codPrenda))
             {
-                prendaACotizar = tienda.IdsToPrendas[codPrenda];
+                prendaACotizar = tienda.DevolverPrendaConId(codPrenda);
                 ActualizarCantidadStockPrenda();
             }
             else
@@ -160,9 +164,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Presenters
                 return;
             }
 
-            ICotizacion cotizacion = new Cotizacion();
+            ICotizacion cotizacion = historialCotizaciones.CrearCotizacionYDevolver();
             cotizacion.IdPrenda = prendaACotizar.Id;
-            vendedor.Cotizar(cotizacion,precioUnitario , cantidadACotizar,calidad, prendaTipo);
+            vendedor.Cotizar(cotizacion,precioUnitario , cantidadACotizar,calidad, prendaACotizar.Tipo);
             cotizacionPrendaView.ResultadoCalculo = cotizacion.ResultadoCalculo.ToString();
         }
         

@@ -16,6 +16,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         public void AgregarPrenda(IPrenda prenda);
 
         public void AgregarListaDePrendas(List<IPrenda> prendas);
+        public IPrenda DevolverPrendaConId(string id);
     }
     public class Tienda: ITienda
     {
@@ -37,6 +38,10 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
             {
                 AgregarPrenda(prenda);
             }
+        }
+        public IPrenda DevolverPrendaConId(string id)
+        {
+            return idsToPrendas[id];
         }
 
 

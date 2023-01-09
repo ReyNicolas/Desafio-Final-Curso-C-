@@ -14,7 +14,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         public Tienda Tienda { get; set; }
 
         public List<ICotizacion> Cotizaciones { get; }
-        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, string tipo);
+        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, TipoPrenda tipo);
     }
 
 
@@ -24,11 +24,20 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
         string nombre;
         string apellido;
         Tienda tienda;
-        AjustarPrecioTipoPrendaTipoCalidad ajustador;
-        List<ICotizacion> cotizaciones = new List<ICotizacion>();
+        IAjustarPrecioTipoPrendaTipoCalidad ajustador;
+        IHistorialCotizacionesVendedores historialCotizaciones;
 
+        public Vendedor(int id, string nombre, string apellido, Tienda tienda, IAjustarPrecioTipoPrendaTipoCalidad ajustador, IHistorialCotizacionesVendedores historialCotizaciones)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.tienda = tienda;
+            this.ajustador = ajustador;
+            this.historialCotizaciones = historialCotizaciones;
+        }
 
-        public AjustarPrecioTipoPrendaTipoCalidad Ajustador
+        public IAjustarPrecioTipoPrendaTipoCalidad Ajustador
         {
             get { return ajustador; }
             set { ajustador = value; }
@@ -61,9 +70,9 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
 
         public List<ICotizacion> Cotizaciones 
         {
-            get { return cotizaciones; }
+            get { return historialCotizaciones.DevolverCotizacionesDeVendedorId(id); }
         }
-        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, string tipo)
+        public ICotizacion Cotizar(ICotizacion cotizacion, float precioUnitario, int cantidad, string calidad, TipoPrenda tipo)
         {
             cotizacion.PrecioUnitario = precioUnitario;
             cotizacion.CantidadPrendaCotizada = cantidad;
@@ -71,7 +80,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
             cotizacion.FechaYHora = DateTime.Now.ToString();
             cotizacion.IdVendedor = id;
 
-            this.cotizaciones.Add(cotizacion);
             return cotizacion;
         }
     }

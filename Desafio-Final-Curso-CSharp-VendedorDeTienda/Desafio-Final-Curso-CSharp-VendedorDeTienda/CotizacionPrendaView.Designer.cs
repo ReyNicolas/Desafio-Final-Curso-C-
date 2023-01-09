@@ -52,7 +52,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.lblUnidadesDisponibles = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.gbPrendas = new System.Windows.Forms.GroupBox();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.panelTipoCamisa = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.rdBtnCuelloMao = new System.Windows.Forms.RadioButton();
             this.rdBtnCuelloComun = new System.Windows.Forms.RadioButton();
@@ -61,7 +61,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnMangaCorta = new System.Windows.Forms.RadioButton();
             this.rdBtnMangaLarga = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panelTipoPantalon = new System.Windows.Forms.Panel();
             this.rdBtnPantalonChupin = new System.Windows.Forms.RadioButton();
             this.rdBtnPantalonComun = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -83,10 +83,10 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gpBoxPrecioUnitarioYCantidad.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbPrendas.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.panelTipoCamisa.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.panelTipoPantalon.SuspendLayout();
             this.panel4.SuspendLayout();
             this.gpBoxCalidad.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +151,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer2.Panel2.Controls.Add(this.PanelCotizar);
             this.splitContainer2.Panel2.Controls.Add(this.btnNuevaConsulta);
+            this.splitContainer2.Panel2.Controls.Add(this.lblResultadoPrecioMostrar);
+            this.splitContainer2.Panel2.Controls.Add(this.lblResultadoPrecioTexto);
             this.splitContainer2.Size = new System.Drawing.Size(808, 571);
             this.splitContainer2.SplitterDistance = 44;
             this.splitContainer2.TabIndex = 0;
@@ -201,8 +203,6 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.PanelCotizar.Controls.Add(this.lblMensajeError);
             this.PanelCotizar.Controls.Add(this.gpBoxPrecioUnitarioYCantidad);
-            this.PanelCotizar.Controls.Add(this.lblResultadoPrecioMostrar);
-            this.PanelCotizar.Controls.Add(this.lblResultadoPrecioTexto);
             this.PanelCotizar.Controls.Add(this.btnCotizarPrenda);
             this.PanelCotizar.Controls.Add(this.panel1);
             this.PanelCotizar.Controls.Add(this.gbPrendas);
@@ -282,7 +282,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.lblResultadoPrecioMostrar.AutoSize = true;
             this.lblResultadoPrecioMostrar.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(362, 412);
+            this.lblResultadoPrecioMostrar.Location = new System.Drawing.Point(466, 483);
             this.lblResultadoPrecioMostrar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioMostrar.Name = "lblResultadoPrecioMostrar";
             this.lblResultadoPrecioMostrar.Size = new System.Drawing.Size(0, 26);
@@ -292,7 +292,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // 
             this.lblResultadoPrecioTexto.AutoSize = true;
             this.lblResultadoPrecioTexto.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResultadoPrecioTexto.Location = new System.Drawing.Point(270, 412);
+            this.lblResultadoPrecioTexto.Location = new System.Drawing.Point(374, 483);
             this.lblResultadoPrecioTexto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultadoPrecioTexto.Name = "lblResultadoPrecioTexto";
             this.lblResultadoPrecioTexto.Size = new System.Drawing.Size(88, 26);
@@ -348,8 +348,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             // gbPrendas
             // 
             this.gbPrendas.BackColor = System.Drawing.Color.Lavender;
-            this.gbPrendas.Controls.Add(this.panel6);
-            this.gbPrendas.Controls.Add(this.panel5);
+            this.gbPrendas.Controls.Add(this.panelTipoCamisa);
+            this.gbPrendas.Controls.Add(this.panelTipoPantalon);
             this.gbPrendas.Controls.Add(this.panel4);
             this.gbPrendas.Controls.Add(this.gpBoxCalidad);
             this.gbPrendas.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -360,16 +360,17 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.gbPrendas.TabStop = false;
             this.gbPrendas.Text = "Prendas";
             // 
-            // panel6
+            // panelTipoCamisa
             // 
-            this.panel6.BackColor = System.Drawing.Color.Beige;
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.panel3);
-            this.panel6.Controls.Add(this.panel2);
-            this.panel6.Location = new System.Drawing.Point(262, 170);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(238, 75);
-            this.panel6.TabIndex = 11;
+            this.panelTipoCamisa.BackColor = System.Drawing.Color.Beige;
+            this.panelTipoCamisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTipoCamisa.Controls.Add(this.panel3);
+            this.panelTipoCamisa.Controls.Add(this.panel2);
+            this.panelTipoCamisa.Enabled = false;
+            this.panelTipoCamisa.Location = new System.Drawing.Point(262, 170);
+            this.panelTipoCamisa.Name = "panelTipoCamisa";
+            this.panelTipoCamisa.Size = new System.Drawing.Size(238, 75);
+            this.panelTipoCamisa.TabIndex = 11;
             // 
             // panel3
             // 
@@ -451,16 +452,17 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.label1.TabIndex = 2;
             this.label1.Text = "Manga";
             // 
-            // panel5
+            // panelTipoPantalon
             // 
-            this.panel5.BackColor = System.Drawing.Color.LightBlue;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.rdBtnPantalonChupin);
-            this.panel5.Controls.Add(this.rdBtnPantalonComun);
-            this.panel5.Location = new System.Drawing.Point(30, 170);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(220, 73);
-            this.panel5.TabIndex = 10;
+            this.panelTipoPantalon.BackColor = System.Drawing.Color.LightBlue;
+            this.panelTipoPantalon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTipoPantalon.Controls.Add(this.rdBtnPantalonChupin);
+            this.panelTipoPantalon.Controls.Add(this.rdBtnPantalonComun);
+            this.panelTipoPantalon.Enabled = false;
+            this.panelTipoPantalon.Location = new System.Drawing.Point(30, 170);
+            this.panelTipoPantalon.Name = "panelTipoPantalon";
+            this.panelTipoPantalon.Size = new System.Drawing.Size(220, 73);
+            this.panelTipoPantalon.TabIndex = 10;
             // 
             // rdBtnPantalonChupin
             // 
@@ -503,6 +505,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnCamisa.TabIndex = 1;
             this.rdBtnCamisa.Text = "Camisa";
             this.rdBtnCamisa.UseVisualStyleBackColor = true;
+            this.rdBtnCamisa.CheckedChanged += new System.EventHandler(this.rdBtnCamisa_CheckedChanged);
             // 
             // rdBtnPantalon
             // 
@@ -514,6 +517,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.rdBtnPantalon.TabIndex = 0;
             this.rdBtnPantalon.Text = "Pantalon";
             this.rdBtnPantalon.UseVisualStyleBackColor = true;
+            this.rdBtnPantalon.CheckedChanged += new System.EventHandler(this.rdBtnPantalon_CheckedChanged);
             // 
             // gpBoxCalidad
             // 
@@ -577,6 +581,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.PanelCotizar.ResumeLayout(false);
@@ -586,13 +591,13 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gbPrendas.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
+            this.panelTipoCamisa.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panelTipoPantalon.ResumeLayout(false);
+            this.panelTipoPantalon.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.gpBoxCalidad.ResumeLayout(false);
@@ -638,8 +643,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
         private Panel panel4;
         private RadioButton rdBtnCamisa;
         private RadioButton rdBtnPantalon;
-        private Panel panel6;
-        private Panel panel5;
+        private Panel panelTipoCamisa;
+        private Panel panelTipoPantalon;
         private Label lblMensajeError;
         private Label lblCodVendedorText;
         private Button btnNuevaConsulta;

@@ -10,10 +10,11 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
 
     public interface IPrenda
     {
-        public string Id { get; set; }
-        public string IdCalidad { get; set; }
-        public string IdTipo { get; set; }
+        public string Id { get;}
+        public string IdCalidad { get; }
+        public string IdTipo { get;}
 
+        public TipoPrenda Tipo { get; }
         public int CantidadEnStock { get; set; }
     }
 
@@ -22,30 +23,32 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
     {
         string id;
         string idCalidad;
-        string idTipo;
+        TipoPrenda tipoPrenda;
         int cantidadEnStock;
-        public Prenda(string idTipo, string idCalidad, int cantidad)
+        public Prenda(TipoPrenda tipoPrenda, string idCalidad, int cantidad)
         {
             this.idCalidad = idCalidad;
-            this.idTipo = idTipo;
+            this.tipoPrenda = tipoPrenda;
             cantidadEnStock = cantidad;
-            id = idTipo + idCalidad;
+            id = tipoPrenda.Id + idCalidad;
         }
         public string Id
         {
             get { return id; }
-            set { id = value; }
+        }
+
+        public TipoPrenda Tipo
+        {
+            get { return tipoPrenda; }
         }
 
         public string IdCalidad
         {
             get { return idCalidad; }
-            set { idCalidad = value; }
         }
         public string IdTipo
         {
-            get { return idTipo; }
-            set { idTipo = value; }
+            get { return tipoPrenda.Id; }
         }
         public int CantidadEnStock
         {
@@ -55,66 +58,7 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda.Models
     }
 
 
-    public interface ITipoAjustarPrecioPrenda
-    {
-        public float AjustarPrecio(float precio);
-    }
-
-    public class AjustarPrecioMultiplicar : ITipoAjustarPrecioPrenda
-    {
-        float multiplicador;
-
-        public AjustarPrecioMultiplicar(float valor)
-        {
-            multiplicador = valor;
-        }
-        public float AjustarPrecio(float precio)
-        {
-            return precio * multiplicador;
-        }
-    }
-
-    public class AjustarPrecioMultiplicarTrasAnidado : ITipoAjustarPrecioPrenda
-    {
-        float multiplicador;
-        ITipoAjustarPrecioPrenda otroAjustador;
-
-        public AjustarPrecioMultiplicarTrasAnidado(float valor, ITipoAjustarPrecioPrenda ajustador)
-        {
-            multiplicador = valor;
-            otroAjustador = ajustador;
-        }
-
-        public float AjustarPrecio(float precio)
-        {
-            return otroAjustador.AjustarPrecio(precio) * multiplicador;
-        }
-
-    }
-
-    public class AjustarPrecioTipoPrendaTipoCalidad
-    {
-        Dictionary<string, ITipoAjustarPrecioPrenda> idToAjustadores;
-        public AjustarPrecioTipoPrendaTipoCalidad(Dictionary<string, ITipoAjustarPrecioPrenda> idToAjustadores)
-        {
-            this.idToAjustadores = idToAjustadores;
-        }
-
-        public float AjustarPrecioPrendaConTipoYCalidad(float precio, string tipo, string calidad)
-        {
-            if (idToAjustadores.ContainsKey(tipo))
-            {
-                precio = idToAjustadores[tipo].AjustarPrecio(precio);
-            }
-            if (idToAjustadores.ContainsKey(calidad))
-            {
-                precio = idToAjustadores[calidad].AjustarPrecio(precio);
-            }
-
-            return precio;
-        }
-
-    }
+   
 
 
 

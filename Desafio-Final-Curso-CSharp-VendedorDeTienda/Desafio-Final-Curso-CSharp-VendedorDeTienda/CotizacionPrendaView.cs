@@ -47,8 +47,8 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             rdBtnPrendaStandard.Click += delegate { OnCalidadChange?.Invoke(this,"CalidadStandard"); };
             rdBtnPrendaPremium.Click += delegate { OnCalidadChange?.Invoke(this, "CalidadPremium"); };
 
-            rdBtnPantalonChupin.Click += delegate { OnTipoPantalonChange?.Invoke(this, "Chupin"); };
-            rdBtnPantalonComun.Click += delegate { OnTipoPantalonChange?.Invoke(this, "Comun"); };
+            rdBtnPantalonChupin.Click += delegate { OnTipoPantalonChange?.Invoke(this, "EstiloChupin"); };
+            rdBtnPantalonComun.Click += delegate { OnTipoPantalonChange?.Invoke(this, "EstiloComun"); };
 
             rdBtnMangaCorta.Click += delegate { OnTipoMangaChange?.Invoke(this, "MangaCorta"); };
             rdBtnMangaLarga.Click += delegate { OnTipoMangaChange?.Invoke(this, "MangaLarga"); };
@@ -161,5 +161,36 @@ namespace Desafio_Final_Curso_CSharp_VendedorDeTienda
             lblResultadoPrecioMostrar.Text = "";
         }
 
+        private void rdBtnPantalon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdBtnPantalon.Checked)
+            {
+                panelTipoPantalon.Enabled = true;
+            }
+            else
+            {
+                rdBtnPantalonChupin.Checked = false;
+                rdBtnPantalonComun.Checked = false;
+
+                panelTipoPantalon.Enabled = false;
+            }
+        }
+
+        private void rdBtnCamisa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdBtnCamisa.Checked)
+            {
+                panelTipoCamisa.Enabled = true;
+            }
+            else
+            {
+                rdBtnMangaCorta.Checked = false;
+                rdBtnMangaLarga.Checked = false;
+                rdBtnCuelloComun.Checked = false;
+                rdBtnCuelloMao.Checked = false;
+
+                panelTipoCamisa.Enabled = false;
+            }
+        }
     }
 }
